@@ -17,7 +17,15 @@
   "license": "Apache-2.0",
   "description": "Hook wrapper for ImageKit.io client-side SDK",
   "source": "src/index.ts",
+  "targets": {
+    "main": {
+      "includeNodeModules": [
+        "imagekit-javascript"
+      ]
+    }
+  },
   "main": "dist/index.js",
+  "module": "dist/module.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {

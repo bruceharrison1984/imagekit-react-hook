@@ -13,8 +13,7 @@
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": false,
     "baseUrl": "./src",
-    "noEmit": true,
-    "noEmitOnError": true
+    "isolatedModules": true
   },
   "include": ["src", "__tests__"],
   "exclude": [".stories.tsx$", "node_modules"]
