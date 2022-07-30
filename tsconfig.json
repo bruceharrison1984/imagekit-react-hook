@@ -12,12 +12,9 @@
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": false,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "noEmit": true,
-    "noEmitOnError": true,
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "noEmitOnError": true
   },
   "include": ["src", "__tests__"],
   "exclude": [".stories.tsx$", "node_modules"]

@@ -1,4 +1,4 @@
-import { ImageKitContextState } from '@/types/ImageKitContextState';
+import { ImageKitContextState } from '../types/ImageKitContextState';
 import {
   ImageKitOptions,
   UploadOptions,

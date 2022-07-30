@@ -16,19 +16,18 @@
   "author": "Bruce Harrison",
   "license": "Apache-2.0",
   "description": "Hook wrapper for ImageKit.io client-side SDK",
-  "module": "dist/index.js",
+  "source": "src/index.ts",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
     "lint": "cross-env eslint . --ext .ts --ext .tsx",
     "prettier": "cross-env prettier --check -w \"src/**/**.(ts|tsx|js)\"",
-    "build": "cross-env rollup -c"
+    "build": "cross-env rm -rf ./dist && parcel build"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^22.0.1",
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "@swc/core": "^1.2.220",
-    "@swc/helpers": "^0.4.3",
+    "@parcel/packager-ts": "^2.6.2",
+    "@parcel/transformer-typescript-types": "^2.6.2",
     "@types/react": "^16.14.0",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
@@ -38,10 +37,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "parcel": "^2.6.2",
     "prettier": "^2.7.1",
-    "rollup": "^2.77.2",
-    "rollup-plugin-cleaner": "^1.0.0",
-    "rollup-plugin-ts": "^3.0.2",
     "typescript": "4.6.4"
   },
   "peerDependencies": {

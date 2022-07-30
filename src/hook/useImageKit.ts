@@ -1,4 +1,4 @@
-import { ImageKitContext } from '@/provider/ImageKitProvider';
+import { ImageKitContext } from '../provider/ImageKitProvider';
 import { useContext } from 'react';
 
 /**
