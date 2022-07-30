@@ -42,9 +42,17 @@ export const ImageKitProvider = ({
   }, [publicKey, authenticationEndpoint, urlEndpoint]);
 
   const upload = useCallback(
-    async (uploadOptions: UploadOptions, options?: Partial<ImageKitOptions>) =>
-      await imageKitClient.upload(uploadOptions, options),
-    [imageKitClient]
+    async (
+      uploadOptions: UploadOptions,
+      options?: Partial<ImageKitOptions>
+    ) => {
+      if (!authenticationEndpoint)
+        throw new Error(
+          'authenticationEndpoint must be defined to use client-side uploads'
+        );
+      return await imageKitClient.upload(uploadOptions, options);
+    },
+    [imageKitClient, authenticationEndpoint]
   );
 
   const url = useCallback(
