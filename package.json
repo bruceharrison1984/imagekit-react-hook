@@ -1,6 +1,6 @@
 {
   "name": "imagekit-react-hook",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "keywords": [
     "imagekit",
     "react",
@@ -21,7 +21,14 @@
     "main": {
       "includeNodeModules": [
         "imagekit-javascript"
-      ]
+      ],
+      "optimize": true
+    },
+    "module": {
+      "includeNodeModules": [
+        "imagekit-javascript"
+      ],
+      "optimize": true
     }
   },
   "main": "dist/index.js",
