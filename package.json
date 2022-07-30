@@ -1,6 +1,6 @@
 {
   "name": "imagekit-react-hook",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "keywords": [
     "imagekit",
     "react",
@@ -45,7 +45,7 @@
     "typescript": "4.6.4"
   },
   "peerDependencies": {
-    "react": "^16.14.0"
+    "react": ">16.0.0"
   },
   "dependencies": {
     "imagekit-javascript": "^1.5.2"
