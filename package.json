@@ -10,8 +10,11 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "url": "https://github.com/bruceharrison1984/imagekit-react-hook"
+  },
   "author": "Bruce Harrison",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "description": "Hook wrapper for ImageKit.io client-side SDK",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
