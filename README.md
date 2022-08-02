@@ -3,8 +3,10 @@
 [![npm](https://img.shields.io/npm/v/imagekit-react-hook?color=orange)](https://www.npmjs.com/package/imagekit-react-hook)
 
 This is a simple hook wrapper around the ImageKit.io javascript library. It allows for easy usage of client-side uploads,
-as well as generating signed URLs for private images. This is a very direct, non-opinionated wrapper, so the original
-ImageKit.io documentation should be referred to for method usage.
+as well as generating signed URLs for private images.
+
+This is a straight-forward, non-opinionated wrapper, so [the original
+ImageKit.io documentation](https://github.com/imagekit-developer/imagekit-javascript) should be referred to for method usage.
 
 ## Usage
 
@@ -19,6 +21,7 @@ import { ImageKitProvider } from '@/providers/ImageKitProvider';
 const PhotosPage = () => {
   const [origin, setOrigin] = useState<string>();
 
+  /* our authentication end point is on the same server */
   useEffect(() => setOrigin(window.location.origin), []);
 
   return (
@@ -35,14 +38,27 @@ const PhotosPage = () => {
 export default PhotosPage;
 ```
 
-Child components can then access the ImageKitContext via the `useImageKit` hook:
+Child components within `ImageKitProvider` can access the ImageKitContext via the `useImageKit` hook.
+
+This example shows how you could upload a single profile image that a user selected via an `Input` element:
 
 ```tsx
+import { v4 as uuidV4 } from 'uuid';
+import { useImageKit } from 'imagekit-react-hook';
+
 const { upload, url } = useImageKit();
 
-const onClick = (file: File) =>
+/* attach to the onChange event of the input element */
+const onChange = async (event: ChangeEvent<HTMLInputElement>) => {
+  if (!event.target.files)
+    throw new Error('File list is null after selecting a file!');
+
+  const profileImage = event.target.files[0];
+  const ext = profileImage.name.split('.').pop();
+
   await upload({
-    file,
+    file: profileImage,
+    /* we generate a random filename for ImageKit. You can pass through the original filename if you like */
     fileName: [uuidV4(), ext].join('.'),
     extensions: [
       {
@@ -52,13 +68,15 @@ const onClick = (file: File) =>
       },
     ],
   });
+};
 ```
 
 ## Upload Method
 
 The `upload` method is for client-side image uploads. This _requires_ the `authenticationEndpoint` property also
-being set. It is up to you how you implement this endpoint, but ImageKit.io offers [this documentation](https://docs.imagekit.io/api-reference/upload-file-api/client-side-file-upload#signature-generation-for-client-side-file-upload) on how to
-set it up.
+being set to an endpoint that conforms to the specification required.
+
+It is up to you how and where you implement this endpoint, but ImageKit.io offers [this documentation](https://docs.imagekit.io/api-reference/upload-file-api/client-side-file-upload#signature-generation-for-client-side-file-upload).
 
 ## Hook Methods & Props
 
